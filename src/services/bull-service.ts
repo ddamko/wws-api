@@ -1,4 +1,5 @@
 import Database from "@database/database";
+import { GlobalId, Bull, DataCategory } from "@app-types/bull";
 
 class BullService {
 
@@ -8,17 +9,25 @@ class BullService {
         this.db = new Database();
     }
 
-    async GetBullById(id: string) {
-        
+    private async GetGlobalId(id: string) {
+        await this.db.Connect();
+
+        const result = await this.db.Query<GlobalId>(
+            "SELECT dbo.GetGlobalId(@AnimalIdentifier, 'M') GlobalId",
+            ["AnimalIdentifier=" + id]
+        );
+        return result[0].GlobalId;
     }
 
-    async GetBullLineage(id: string) {
+    async GetBullDataByCategory<T>(id: string, category: DataCategory) {
+        const globalId = await this.GetGlobalId(id);
 
+        const result = await this.db.Execute<T>(
+            "Api.AnimalDataBySection", 
+            ["GlobalId=" + globalId, "Dataset=" + category]
+        );
+        return result;
     }
-
-    async GetBullMarketingRights(id: string) {
-        
-    }
-
-
 }
+
+export default BullService;
