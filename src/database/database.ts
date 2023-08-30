@@ -6,8 +6,7 @@ class Database {
     private conn: ConnectionPool | undefined;
 
     constructor() {
-        const pool = new ConnectionPool(dbConfig);
-        this.conn = pool;
+        this.conn = new ConnectionPool(dbConfig);
     }
 
     /**
