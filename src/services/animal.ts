@@ -25,6 +25,23 @@ class AnimalService {
         return result;
     }
 
+    async GetBullsByMarketingGroup(status: string) {
+        if (!this.db) throw new Error("Database is not connected");
+        await this.db.Connect();
+        
+        const result = await this.db.Execute<Record<string, string>>(
+            "Api.BaseAnimal", 
+            [ 
+                "MarketingStatus=" + status,
+                "IncludeProof=1",
+                "IncludeLactation=1",
+            ]
+        );
+        await this.db.Close();
+        
+        return result;
+    }
+
 }
 
 export default AnimalService;
