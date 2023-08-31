@@ -1,4 +1,4 @@
-type Proof = {
+export type Proof = {
     Category: string;
     Trait: string;
     LegacyName: string;
@@ -8,4 +8,14 @@ type Proof = {
     Country: string;
 }
 
-export default Proof;
+export type ProofHistory = {
+    ProofDate: string;
+}
+
+export type ProofPeriod = {
+    Id: string;
+    EvalCountry: string;
+    EvalDateStart: string;
+    EvalDateEnd: string;
+    EvalType: string;
+}
