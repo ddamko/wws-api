@@ -1,5 +1,5 @@
 import Database from "@database/database";
-import { GlobalId, Bull, DataCategory } from "@app-types/bull";
+import { GlobalId, DataCategory } from "@app-types/bull";
 
 class BullService {
 
