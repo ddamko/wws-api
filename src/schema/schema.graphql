@@ -1,0 +1,57 @@
+type Bull {
+    GlobalId: String!
+    RegId: String!
+    ShortName: String
+    RegName: String
+    Gender: String!
+    DateOfBirth: String
+    SireStack: String
+    IsDead: Boolean
+    NaabCode: String
+    Recessives: String
+    Country: String
+    Breed: String
+    BreedSort: String
+    BreedGroup: String
+    YoungSire: String
+    ReleaseDate: String
+    Controller: Int
+    UpdateDate: String
+    Sons: [Sons]
+    Lineage: [Lineage]
+}
+
+type Cow {
+    GlobalId: String!
+    RegId: String!
+    RegName: String
+    Gender: String!
+    DateOfBirth: String
+    IsDead: Boolean
+    Country: String
+    UpdateDate: String
+    Sons: [Sons]
+}
+
+type Sons {
+    ChildId: String!
+    RegId: String!
+    RegName: String
+    ShortName: String
+    Relationship: String!
+    TPI: Int
+    NaabCode: String
+}
+
+type Lineage {
+    Id: String!
+    ParentId: String!
+    RegId: String!
+    Relationship: String!
+    Generation: Int!
+    RegName: String
+}
+
+type Query {
+    GetBull(id: String!): Bull!
+}
