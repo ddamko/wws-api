@@ -65,11 +65,17 @@ export type Lineage = {
 
 export type Query = {
   __typename?: 'Query';
-  GetBull: Bull;
+  Bull: Bull;
+  Sons?: Maybe<Array<Maybe<Sons>>>;
 };
 
 
-export type QueryGetBullArgs = {
+export type QueryBullArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+export type QuerySonsArgs = {
   id: Scalars['String']['input'];
 };
 
@@ -226,7 +232,8 @@ export type LineageResolvers<ContextType = any, ParentType extends ResolversPare
 }>;
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
-  GetBull?: Resolver<ResolversTypes['Bull'], ParentType, ContextType, RequireFields<QueryGetBullArgs, 'id'>>;
+  Bull?: Resolver<ResolversTypes['Bull'], ParentType, ContextType, RequireFields<QueryBullArgs, 'id'>>;
+  Sons?: Resolver<Maybe<Array<Maybe<ResolversTypes['Sons']>>>, ParentType, ContextType, RequireFields<QuerySonsArgs, 'id'>>;
 }>;
 
 export type SonsResolvers<ContextType = any, ParentType extends ResolversParentTypes['Sons'] = ResolversParentTypes['Sons']> = ResolversObject<{
