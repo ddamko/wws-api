@@ -9,6 +9,7 @@
     "@apollo/server": "^4.9.3",
     "@elysiajs/apollo": "^0.6.0",
     "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
     "@graphql-codegen/typescript-resolvers": "^4.0.1",
     "elysia": "latest",
     "graphql": "^16.8.0",
