@@ -14,8 +14,7 @@ class Database {
      */
     async Connect() {
         try {
-            await this.conn?.connect();
-            console.log("Database connected");
+            return await this.conn?.connect();
         } catch (err) {
             console.log("Database connection failed");
             console.log(err);
@@ -28,7 +27,6 @@ class Database {
     async Close() {
         try {
             await this.conn?.close();
-            console.log("Database disconnected");
         } catch (err) {
             console.log("Database disconnection failed");
             console.log(err);
@@ -78,8 +76,8 @@ class Database {
 
         const result = await request.execute<T>(sproc);
         if (result.recordsets.length === 1) return result.recordsets[0];
-            else
-        return result.recordsets;
+        else
+            return result.recordsets;
     }
 
 }

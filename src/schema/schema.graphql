@@ -1,10 +1,12 @@
+scalar Date
+
 type Bull {
     GlobalId: String!
     RegId: String!
     ShortName: String
     RegName: String
-    Gender: String!
-    DateOfBirth: String
+    Gender: String
+    DateOfBirth: Date
     SireStack: String
     IsDead: Boolean
     NaabCode: String
@@ -14,23 +16,170 @@ type Bull {
     BreedSort: String
     BreedGroup: String
     YoungSire: String
-    ReleaseDate: String
+    ReleaseDate: Date
     Controller: Int
-    UpdateDate: String
+    UpdateDate: Date
     Sons: [Sons]
-    Lineage: [Lineage]
+    Lineage(input: LineageInput): [Lineage]
+    HealthTests: [HealthTests]
+    NaabCodes: [NaabCode]
+    Haplotypes: Haplotypes
+    Designations: [Designation]
+    MarketingGroups: [MarketingGroup]
+    DamProduction: [DamProduction]
+    DtrAvgProduction: [DtrAvgProduction]
+    Meta: [Meta]
+    Genotypes: [Genotype]
+    ProdState: ProdState
+    Identities: [Identities]
+    Proof: [Proof]
+    ProofHistory: [ProofHistory]
+    ProofPeriod: [ProofPeriod]
+    ProofSource: [ProofSource]
 }
 
-type Cow {
-    GlobalId: String!
-    RegId: String!
-    RegName: String
-    Gender: String!
-    DateOfBirth: String
-    IsDead: Boolean
+type Proof {
+    Category: String
+    Trait: String
+    LegacyName: String
+    Value: Float
+    IsPublished: Boolean
+    Format: String
     Country: String
-    UpdateDate: String
-    Sons: [Sons]
+}
+
+type ProofHistory {
+    ProofDate: Date
+}
+
+type ProofPeriod {
+    Id: String
+    EvalCountry: String
+    EvalDateStart: Date
+    EvalDateEnd: Date
+    EvalType: String
+}
+
+type Identities {
+    Identifier: String
+    Type: String
+    Origin: String
+}
+
+type ProofSource {
+    Type: String
+    SourceName: String
+    Label: String
+    Description: String
+}
+
+type ProdState {
+    Type: String
+    BarnCode: String
+    BarnStatus: String
+    Location: String
+    State: String
+    MoveDate: String
+    ResidencyDate: String
+    IsProduction: Boolean
+    IsEU: Boolean
+    IsIsolation: Boolean
+    IsLayoff: Boolean
+    IsLaughterHouse: Boolean
+}
+
+type Genotype {
+    Name: String
+    LegacyName: String
+    Description: String
+    Value: String
+}
+
+type Meta {
+    Meta: String
+    Value: String   
+}
+
+interface Production {
+    Id: String
+    Name: String
+    Label: String
+    LegacyName: String
+    FormattedValue: String
+    ValueKg: Int
+    ValueLb: Int
+    Value: Float
+    Type: String
+    Format: String
+    Published: Boolean
+    DisplayOrder: Int
+}
+
+type DtrAvgProduction implements Production {
+    Id: String
+    Name: String
+    Label: String
+    LegacyName: String
+    FormattedValue: String
+    ValueKg: Int
+    ValueLb: Int
+    Value: Float
+    Type: String
+    Format: String
+    Published: Boolean
+    DisplayOrder: Int
+}
+
+type DamProduction implements Production {
+    Id: String
+    Name: String
+    Label: String
+    LegacyName: String
+    FormattedValue: String
+    ValueKg: Int
+    ValueLb: Int
+    Value: Float
+    Type: String
+    Format: String
+    Published: Boolean
+    DisplayOrder: Int
+}
+
+type MarketingGroup {
+    Name: String
+    Type: String
+    Action: String
+    ActionDate: Date
+    ActivateDate: Date
+    ExpireDate: Date
+}
+
+type Designation {
+    Name: String
+    Type: String
+    LegacyName: String
+    Label: String
+    Thumbnail: String
+    ActivateDate: Date
+    ExpireDate: Date
+}
+
+type Haplotypes {
+    MarketingHaplotype: String
+}
+
+type NaabCode {
+    NaabCode: String
+    Published: Boolean
+    DisplayOrder: Int
+    Sexed: Boolean
+}
+
+type HealthTests {
+    LegacyName: String
+    TestName: String
+    TestDate: Date
+    TestResult: String
 }
 
 type Sons {
@@ -52,7 +201,10 @@ type Lineage {
     RegName: String
 }
 
+input LineageInput {
+    Generation: Int!
+}
+
 type Query {
     Bull(id: String!): Bull!
-    Sons(id: String!): [Sons]
 }

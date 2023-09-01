@@ -20,11 +20,12 @@ class BullService {
     }
 
     async GetBullDataByCategory<T>(id: string, category: DataCategory) {
-        const globalId = await this.GetGlobalId(id);
+        if (category === "base") id = await this.GetGlobalId(id);
+        if (!this.db.Connect()) await this.db.Connect();
 
         const result = await this.db.Execute<T>(
-            "Api.AnimalDataBySection", 
-            ["GlobalId=" + globalId, "Dataset=" + category]
+            "Api.AnimalDataBySection",
+            ["GlobalId=" + id, "Dataset=" + category]
         );
         return result;
     }
