@@ -1,4 +1,22 @@
-import { Bull, Sons, Lineage, BullLineageArgs, HealthTests, NaabCode, Haplotypes, Designation, MarketingGroup, DamProduction, Meta, Genotype, ProdState, ProofSource, ProofHistory, Proof, Identities } from "@app-types/gen-types";
+import { 
+  Bull, 
+  Sons, 
+  Lineage, 
+  BullLineageArgs, 
+  HealthTests, 
+  NaabCode, 
+  Haplotypes, 
+  Designation, 
+  MarketingGroup, 
+  DamProduction, 
+  Meta, 
+  Genotype, 
+  ProdState, 
+  ProofSource, 
+  ProofHistory, 
+  Proof, 
+  Identities 
+} from "@app-types/gen-types";
 import BullService from "@services/bull-service";
 
 const bullService = new BullService();

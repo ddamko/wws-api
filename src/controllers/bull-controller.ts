@@ -14,3 +14,4 @@ export const GetBullHealthTests = async (ctx: { params: { id: string } }) => {
 export const GetBullLineage = async (ctx: { params: { id: string } }) => {
     return await bullService.GetBullDataByCategory<BullLineage>(ctx.params.id, "lineage");
 }
+
