@@ -23,7 +23,7 @@ import {
 } from "@resolvers/bull-resolver";
 
 // Define the app an listen on port 3000.
-const app = new Elysia().listen(3000);
+const app = new Elysia().listen({ hostname: '0.0.0.0', port: process.env.port || 3000 });
 // Import GraphQL schema.
 const typeDefs = readFileSync('./src/schema/schema.graphql', 'utf8');
 // Define resolvers.
