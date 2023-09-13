@@ -1,8 +1,10 @@
 {
   "name": "wws-api",
+  "type": "module",
   "version": "5.0.0",
   "scripts": {
     "dev": "bun run --watch src/index.ts",
+    "start": "bun run src/index.ts",
     "gen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
@@ -16,9 +18,10 @@
     "mssql": "^9.1.3"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "latest",
     "@graphql-codegen/cli": "^5.0.0",
     "@types/mssql": "^8.1.2",
     "bun-types": "latest"
   },
-  "module": "src/index.js"
+  "module": "src/index.ts"
 }
