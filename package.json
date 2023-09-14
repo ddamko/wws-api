@@ -23,5 +23,8 @@
     "@types/mssql": "^8.1.2",
     "bun-types": "latest"
   },
+  "peerDependencies": {
+    "dns": "0.2.2"
+  },
   "module": "src/index.ts"
 }
