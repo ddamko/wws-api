@@ -1,6 +1,7 @@
 import { Elysia, t } from "elysia";
 // import { GetBull, GetBullHealthTests, GetBullLineage } from "@controllers/bull-controller";
 import { apollo } from '@elysiajs/apollo'
+import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { readFileSync } from 'node:fs'
 import { Resolvers } from "@app-types/gen-types";
 import {
@@ -50,7 +51,13 @@ const resolvers: Resolvers = {
     }
 }
 
-app.use(apollo({ typeDefs: typeDefs, resolvers: resolvers }));
+app.use(
+    apollo({
+        typeDefs: typeDefs,
+        resolvers: resolvers,
+        introspection: true,
+    })
+);
 
 // app.get("/bull/:id", GetBull, { params: t.Object({ id: t.String() }) });
 // app.get("/bull/health/:id", GetBullHealthTests, { params: t.Object({ id: t.String() }) });
@@ -59,3 +66,4 @@ app.use(apollo({ typeDefs: typeDefs, resolvers: resolvers }));
 console.log(
     `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
 );
+

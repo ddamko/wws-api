@@ -10,6 +10,12 @@ WORKDIR /app
 # Set production environment
 ENV NODE_ENV="production"
 
+# Set database connection info
+ENV DATABASE_SERVER=siredb.westus.cloudapp.azure.com
+ENV DATEBASE_USER=TheRingService
+ENV DATABASE_PASSWORD='Br33d\$55'
+ENV DATABASE_NAME=TheRing
+
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
@@ -18,11 +24,11 @@ RUN apt-get update -qq && \
     apt-get install -y build-essential pkg-config python-is-python3
 
 # Install node modules
-COPY --link bun.lockb package.json ./
+COPY bun.lockb package.json ./
 RUN bun install --ci
 
 # Copy application code
-COPY --link . .
+COPY . .
 
 # Final stage for app image
 FROM base
