@@ -13,7 +13,6 @@
     "@graphql-codegen/typescript": "^4.0.1",
     "@graphql-codegen/typescript-operations": "^4.0.1",
     "@graphql-codegen/typescript-resolvers": "^4.0.1",
-    "dns": "^0.2.2",
     "elysia": "latest",
     "graphql": "^16.8.0",
     "mssql": "^9.1.3"
